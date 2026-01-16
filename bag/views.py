@@ -20,15 +20,24 @@ def add_to_bag(request, item_id):
 
     if size:
         if item_id in list(bag.keys()):
-            if size in bag[item_id]['items_by_size'].keys():
-                bag[item_id]['items_by_size'][size] += quantity
+            if isinstance(bag[item_id], dict):
+                if size in bag[item_id]['items_by_size'].keys():
+                    bag[item_id]['items_by_size'][size] += quantity
+                else:
+                    bag[item_id]['items_by_size'][size] = quantity
             else:
-                bag[item_id]['items_by_size'][size] = quantity
+                # Product was previously added without size, convert to dict format
+                bag[item_id] = {'items_by_size': {size: quantity}}
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
     else:
         if item_id in list(bag.keys()):
-            bag[item_id] += quantity
+            if isinstance(bag[item_id], dict):
+                # Product was previously added with size, just increment quantity
+                quantity += sum(bag[item_id]['items_by_size'].values())
+                bag[item_id] = quantity
+            else:
+                bag[item_id] += quantity
         else:
             bag[item_id] = quantity
 
