@@ -18,6 +18,7 @@ media/
 # Environment variables
 .env
 *.env
+env.py
 
 # IDE
 .vscode/
