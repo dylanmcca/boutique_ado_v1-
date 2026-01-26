@@ -5,11 +5,9 @@
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
-{% block inner_content %}
+{% block account_page_title %}{% trans "Sign In" %}{% endblock %}
 
-<hr>
-<h2 class="logo-font mb-4">{% trans "Sign In" %}</h2>
-<hr>
+{% block inner_content %}
 
 {% get_providers as socialaccount_providers %}
 
