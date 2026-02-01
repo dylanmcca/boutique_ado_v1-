@@ -32,7 +32,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'boutique-ado-ceee363a3f56.herokuapp.com'
+    'botique-ado-ceee363a3f56.herokuapp.com'
 ]
 
 
