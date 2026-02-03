@@ -9,13 +9,29 @@
     {% block body %}
 
     {% if messages %}
-    <div>
-      <strong>Messages:</strong>
-      <ul>
-        {% for message in messages %}
-        <li>{{message}}</li>
-        {% endfor %}
-      </ul>
+    <style>
+      .allauth-messages {
+        position: fixed;
+        top: 72px;
+        right: 15px;
+        z-index: 99999999999;
+        max-width: 400px;
+      }
+      .allauth-messages div {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      }
+    </style>
+    <div class="allauth-messages">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags|default:'info' }}">
+        {{message}}
+      </div>
+      {% endfor %}
     </div>
     {% endif %}
 
